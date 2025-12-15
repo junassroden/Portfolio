@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="design/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<header>
+  <nav class="navbar">
+
+    <div class="left-nav">
+      <div class="hamburger">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="logo">My Portfolio</div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#languages">Programming Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+  </nav>
+</header>
+
+  <!-- ===== HOME SECTION ===== -->
+  <section id="home" class="home-section">
+    <div class="home-container">
+      <div class="home-content">
+        <h1>Hi, I'm <span class="highlight">Jhonas Roden Cabañero</span></h1>
+        <h2><span class="accent">An Information Technology Student.</span></h2>
+        <p class="description">
+          I’m a BSIT student from Mindoro State University, passionate about technology and software development. 
+          I enjoy designing, building, and improving systems that make a difference.
+        </p>
+        <div class="home-buttons">
+          <a href="#about" class="btn-filled"><i class="fas fa-briefcase"></i> About Me</a>
+          <a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"></i> Contact Me</a>
+        </div>
+        <div class="home-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+      <div class="home-image">
+        <img src="Resources/graduation.jpg" alt="Jhonas Roden Cabañero">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section id="about" class="about-section">
+    <div class="about-container">
+      <div class="about-image">
+        <img src="Resources/graduation.jpg" alt="Jhonas Roden Cabañero">
+      </div>
+      <div class="about-text">
+        <h2>Hello!<br> I'm Jhonas</h2>
+        <p>
+          I am a second-year BSIT student at Mindoro State University, currently looking for an opportunity 
+          to gain practical knowledge and enhance my technical skills. I am eager to learn, adaptable, and 
+          driven to grow both personally and professionally.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS & CERTIFICATIONS ===== -->
+  <section id="skills" class="skills-section">
+    <h2>Skills & Certifications</h2>
+    <h3 class="subheading">Technical Certifications</h3>
+
+    <div class="skills-grid">
+      <!-- Skill Card -->
+      <div class="skill-card">
+        <div class="skill-front">
+          <i class="fas fa-code"></i>
+          <h3>Programming (NC III)</h3>
+          <p>Software development and problem-solving fundamentals.</p>
+        </div>
+        <div class="skill-back">
+          <img src="Resources/TesdaNC3.jpg" alt="Programming Badge">
+          <span>NC III Certificate</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-front">
+          <i class="fas fa-network-wired"></i>
+          <h3>Networking Basics</h3>
+          <p>Network concepts, configuration, and troubleshooting.</p>
+        </div>
+        <div class="skill-back">
+          <img src="Resources/networking-basics.png" alt="Networking Badge">
+          <span>Cisco Certified</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-front">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Cybersecurity</h3>
+          <p>Threat awareness and data protection techniques.</p>
+        </div>
+        <div class="skill-back">
+          <img src="Resources/Introduction-to-Cybersecurity.png" alt="Cybersecurity Badge">
+          <span>Cisco Certificate</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-front">
+          <i class="fas fa-desktop"></i>
+          <h3>Operating Systems</h3>
+          <p>OS structure, commands, and system management.</p>
+        </div>
+        <div class="skill-back">
+          <img src="Resources/operating-systems-basics.png" alt="OS Badge">
+          <span>Cisco Certificate</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-front">
+          <i class="fas fa-microchip"></i>
+          <h3>Computer Hardware</h3>
+          <p>PC components and hardware troubleshooting.</p>
+        </div>
+        <div class="skill-back">
+          <img src="Resources/computer-hardware-basics.png" alt="Hardware Badge">
+          <span>Cisco Certificate</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROGRAMMING LANGUAGES ===== -->
+  <section id="languages" class="skills-section">
+    <h2>Programming Languages</h2>
+
+    <div class="programming-grid">
+      <div class="programming-card">
+        <i class="fas fa-code"></i>
+        <h3>C#</h3>
+        <span>Windows Forms • Backend</span>
+      </div>
+
+      <div class="programming-card">
+        <i class="fas fa-database"></i>
+        <h3>SQL</h3>
+        <span>MySQL • SQL Server</span>
+      </div>
+
+      <div class="programming-card">
+        <i class="fab fa-html5"></i>
+        <h3>HTML</h3>
+        <span>Semantic Markup</span>
+      </div>
+
+      <div class="programming-card">
+        <i class="fab fa-css3-alt"></i>
+        <h3>CSS</h3>
+        <span>Responsive Design</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="projects-section">
+    <h2>My Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="Resources/Thumbnail.png" alt="Project 1">
+        <h3>Inventory Management System</h3>
+        <p>A C# Windows Forms application for managing inventory and sales with a local database.</p>
+        <a href="https://youtu.be/1BOK69F4tgY" target="_blank" class="btn-project">View Project</a>
+      </div>
+
+      <div class="project-card">
+        <img src="Resources/System.png" alt="Project 2">
+        <h3>Bus Transportation System</h3>
+        <p>A C# Windows Forms application for managing bus queues and improving passenger flow in public transportation.</p>
+        <a href="https://youtu.be/rxzNKqiPfA0" target="_blank" class="btn-project">View Project</a>
+      </div>
+
+      <div class="project-card">
+        <img src="Resources/project3.jpg" alt="Project 3">
+        <h3>Portfolio Website</h3>
+        <p>Responsive website built using HTML, CSS, and JavaScript to showcase personal projects.</p>
+        <a href="https://yourportfolio.com" target="_blank" class="btn-project">View Project</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section id="contact" class="contact-section">
+    <h2>Contact Me</h2>
+    <p>If you’d like to get in touch, feel free to reach out!</p>
+
+    <div class="contact-container">
+      <!-- ===== Contact Form ===== -->
+      <form id="contactForm" class="contact-form" novalidate>
+        <div class="form-row">
+          <input type="text" id="name" name="name" placeholder="Your Name" required>
+          <input type="email" id="email" name="email" placeholder="Your Email" required>
+        </div>
+        <textarea id="message" name="message" placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+        <div id="form-status"></div>
+      </form>
+
+      <!-- ===== Direct Contact Links ===== -->
+      <div class="contact-links">
+        <a href="https://github.com/junassroden" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="" target="_blank"><i class="fas fa-briefcase"></i> JobStreet</a>
+        <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Jhonas Roden Cabañero. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
