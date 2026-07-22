@@ -31,7 +31,6 @@
   --transition-slow: 0.5s ease;
 }
 
-/* ===== RESET & BASE ===== */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -75,8 +74,8 @@ button {
   background: none;
 }
 
-/* ===== UTILITIES ===== */
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
@@ -101,7 +100,6 @@ button {
   font-weight: 600;
 }
 
-/* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -119,7 +117,6 @@ button {
   background: var(--accent-strong-glow);
 }
 
-/* ===== NAVBAR ===== */
 .navbar {
   position: fixed;
   top: 0;
@@ -140,6 +137,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%; 
   padding: 1rem 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -211,7 +209,6 @@ button {
   display: block;
 }
 
-/* Mobile Navigation */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -253,7 +250,6 @@ button {
   }
 }
 
-/* ===== HERO SECTION ===== */
 .hero-section {
   position: relative;
   min-height: 100vh;
@@ -383,9 +379,9 @@ button {
 }
 
 .hero-buttons {
-  display: flex;
+display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start; 
   gap: 1rem;
   margin-bottom: 1.5rem;
 }
@@ -439,7 +435,7 @@ button {
 
 .social-links {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start; 
   gap: 1rem;
 }
 
