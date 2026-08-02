@@ -340,6 +340,24 @@ button {
   }
 }
 
+/* Make the official programming language logos bigger */
+.tech-icon i {
+  font-size: 3rem !important; /* Adjust this number to change size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Optional: Make the circular icon container slightly larger to fit the bigger icon */
+.tech-icon {
+  width: 64px;  /* Increase if your current box is too small */
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .hero-badge {
   display: inline-block;
   padding: 0.5rem 1rem;
