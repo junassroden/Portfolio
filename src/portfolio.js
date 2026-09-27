@@ -1,3 +1,5 @@
+import emailjs from "@emailjs/browser";
+
 export function initializePortfolio() {
   "use strict";
 
@@ -633,14 +635,10 @@ export function initializePortfolio() {
     "template_ttjyhg8";
 
 
-  if (typeof emailjs !== "undefined") {
-
-    emailjs.init({
-      publicKey:
-        EMAILJS_PUBLIC_KEY
-    });
-
-  }
+  emailjs.init({
+    publicKey:
+      EMAILJS_PUBLIC_KEY
+  });
 
 
   function status(
