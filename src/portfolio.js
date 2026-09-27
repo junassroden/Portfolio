@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+export function initializePortfolio() {
   "use strict";
 
   /* =========================================================
@@ -248,8 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
               );
 
             });
-
-          });
+            });
 
         },
         {
@@ -839,4 +838,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-});
+}
