@@ -1,5 +1,243 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { initializePortfolio } from "./portfolio.js";
+
+const projectExhibits = [
+  {
+    title: "Inventory Management System",
+    label: "DESKTOP APPLICATION",
+    image: "Resources/Thumbnail.png",
+    alt: "Inventory Management System screenshot",
+    description: "Inventory and sales management system built in C# Windows Forms with a local SQL database for organized product tracking, sales operations, and reporting.",
+    features: ["Product and stock management", "SQL-backed records", "Organized inventory workflow"],
+    tags: ["C#", "Windows Forms", "SQL"],
+    demo: "https://youtu.be/1BOK69F4tgY"
+  },
+  {
+    title: "Bus Transportation System",
+    label: "TRANSPORTATION SYSTEM",
+    image: "Resources/System.png",
+    alt: "Bus Transportation System screenshot",
+    description: "A C# Windows Forms application designed around bus queues, scheduling, routes, and passenger flow.",
+    features: ["Queue management", "Scheduling", "Routes and passenger flow"],
+    tags: ["C#", "WinForms", "Queue System"],
+    demo: "https://youtu.be/rxzNKqiPfA0"
+  },
+  {
+    title: "Mindeus Application",
+    label: "INVENTORY / SALES",
+    image: "Resources/barcode.png",
+    alt: "Mindeus Application screenshot",
+    description: "C# and SQL inventory and sales system with QR Code integration for quick product tracking and inventory updates.",
+    features: ["Inventory and sales", "QR Code integration", "Product tracking"],
+    tags: ["C#", "SQL", "QR Code"],
+    demo: "https://youtu.be/rN3H8uTWPIM"
+  },
+  {
+    title: "Enterprise Web Portal",
+    label: "WEB APPLICATION",
+    image: "Resources/School ulit.png",
+    alt: "Enterprise Web Portal screenshot",
+    description: "Greenfield Academy Enrollment System for managing student registrations, enrollment records, and academic information.",
+    features: ["Student registration", "Enrollment records", "Academic information"],
+    tags: ["Lavalite", "PHP", "JavaScript", "SQL", "CSS"],
+    demo: "https://youtu.be/odUhFoE4CeY"
+  },
+  {
+    title: "MinSU Scholarship System",
+    label: "SCHOLARSHIP MANAGEMENT",
+    image: "Resources/MinSU.png",
+    alt: "MinSU Scholarship System screenshot",
+    description: "Centralized web-based scholarship application and record management for Mindoro State University.",
+    features: ["Scholarship applications", "Record management", "Centralized web system"],
+    tags: ["Lavalite", "PHP", "SQL", "JavaScript"],
+    demo: "https://youtu.be/ufftpIjSSVA"
+  },
+  {
+    title: "ScholarFlow",
+    label: "RESEARCH PLATFORM",
+    image: "Resources/scholarflo.png",
+    alt: "ScholarFlow screenshot",
+    description: "Laravel and SQL-powered research management platform for paper discovery, abstracts, citations, and organization.",
+    features: ["Paper discovery", "Abstracts and citations", "Research organization"],
+    tags: ["Laravel", "PHP", "SQL", "JavaScript"],
+    demo: "https://youtu.be/Ya7McivAlA0?si=OQBk-ZUsZ1klmfdx"
+  }
+];
+
+function ProjectExhibition() {
+  const [active, setActive] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [tech, setTech] = useState(null);
+  const project = projectExhibits[active];
+
+  const selectProject = (index) => {
+    if (index === active) return;
+    setDirection(index > active ? 1 : -1);
+    setTech(null);
+    setActive(index);
+  };
+
+  return (
+    <div className="project-exhibition reveal">
+      <div className="project-exhibition-main">
+        <div className={`exhibit-artifact exhibit-direction-${direction}`} key={project.title}>
+          <div className="artifact-topline">
+            <span>EXHIBIT / {String(active + 1).padStart(2, "0")}</span>
+            <span>{project.label}</span>
+          </div>
+          <div className="artifact-stage" data-project-stage>
+            <div className="artifact-line artifact-line-a" />
+            <div className="artifact-line artifact-line-b" />
+            <span className="artifact-note artifact-note-a">SCREENSHOT / PROOF</span>
+            <span className="artifact-note artifact-note-b">ACTUAL PROJECT VISUAL</span>
+            <div className="artifact-browser">
+              <div className="artifact-browser-bar">
+                <span className="browser-controls"><i /><i /><i /></span>
+                <span>{project.title}</span>
+                <span>0{active + 1}</span>
+              </div>
+              <img src={project.image} alt={project.alt} loading={active === 0 ? "eager" : "lazy"} />
+            </div>
+          </div>
+        </div>
+
+        <div className="project-exhibition-copy">
+          <div className="exhibit-counter"><span>{String(active + 1).padStart(2, "0")}</span><i /> <span>{String(projectExhibits.length).padStart(2, "0")}</span></div>
+          <p className="project-label">{project.label}</p>
+          <h3>{project.title}</h3>
+          <p className="exhibit-description">{project.description}</p>
+
+          <div className="exhibit-functionality">
+            <span>FUNCTIONALITY</span>
+            <ul>
+              {project.features.map((feature) => <li key={feature}>{feature}</li>)}
+            </ul>
+          </div>
+
+          <div className="exhibit-tech-block">
+            <span className="exhibit-small-label">TECHNOLOGY</span>
+            <div className="exhibit-tech-list">
+              {project.tags.map((tag) => (
+                <button
+                  type="button"
+                  className={tech === tag ? "tech-marker is-active" : "tech-marker"}
+                  key={tag}
+                  onMouseEnter={() => setTech(tag)}
+                  onMouseLeave={() => setTech(null)}
+                  onFocus={() => setTech(tag)}
+                  onBlur={() => setTech(null)}
+                  aria-label={`Highlight ${tag}`}
+                >
+                  {tag}
+                </button>
+              ))}
+            </div>
+            <p className="tech-hint" aria-live="polite">
+              {tech ? `${tech} is part of this project.` : "Hover or focus a technology to inspect it."}
+            </p>
+          </div>
+
+          <a className="project-action exhibit-demo" href={project.demo} target="_blank" rel="noopener noreferrer">
+            <span>Watch project demo</span><span>↗</span>
+          </a>
+        </div>
+      </div>
+
+      <div className="project-exhibition-index" aria-label="Project exhibition index">
+        <div className="index-heading"><span>EXHIBITION INDEX</span><span>{projectExhibits.length} WORKS</span></div>
+        <div className="index-list">
+          {projectExhibits.map((item, index) => (
+            <button
+              type="button"
+              key={item.title}
+              className={index === active ? "index-item is-active" : "index-item"}
+              onClick={() => selectProject(index)}
+              aria-current={index === active ? "true" : undefined}
+            >
+              <span className="index-number">{String(index + 1).padStart(2, "0")}</span>
+              <span className="index-title">{item.title}</span>
+              <span className="index-arrow">↗</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const credentialExhibits = [
+  { image: "Resources/TesdaNC3.jpg", title: "Programming NC III", issuer: "TESDA National Certificate", category: "Programming" },
+  { image: "Resources/computer-hardware-basics.png", title: "Computer Hardware Basics", issuer: "Cisco Networking Academy", category: "Hardware" },
+  { image: "Resources/Networking-Basics.png", title: "Networking Basics", issuer: "Cisco Networking Academy", category: "Networking" },
+  { image: "Resources/Introduction-to-Cybersecurity.png", title: "Introduction to Cybersecurity", issuer: "Cisco Networking Academy", category: "Cybersecurity" },
+  { image: "Resources/Operating-System-Basics.png", title: "Operating System Basics", issuer: "Cisco Networking Academy", category: "Operating Systems" },
+  { image: "Resources/python.png", title: "Python Essentials 1", issuer: "Cisco Networking Academy", category: "Python" },
+  { image: "Resources/python2.png", title: "Python Essentials 2", issuer: "Cisco Networking Academy", category: "Python" },
+  { image: "Resources/sql.png", title: "Introduction to SQL", issuer: "Simply Learn", category: "SQL" },
+  { image: "Resources/machinelearning.png", title: "Machine Learning using Python", issuer: "IBM / Coursera", category: "Machine Learning" },
+  { image: "Resources/dashboard.png", title: "Excel Dashboards (Beginner)", issuer: "Simply Learn", category: "Data / Excel" }
+];
+
+function CredentialExhibition() {
+  const [active, setActive] = useState(0);
+  const credential = credentialExhibits[active];
+
+  const selectCredential = (index) => setActive(index);
+
+  return (
+    <div className="credential-exhibition reveal">
+      <div className="credential-feature-stage">
+        <div className="credential-feature-meta">
+          <span>ARCHIVE / {String(active + 1).padStart(2, "0")}</span>
+          <span>{credential.category}</span>
+        </div>
+        <button
+          type="button"
+          className="credential-feature-image"
+          data-certificate={credential.image}
+          data-title={credential.title}
+          data-issuer={credential.issuer}
+          aria-label={`Open ${credential.title}`}
+        >
+          <img src={credential.image} alt={`${credential.title} certificate`} />
+          <span className="credential-open">OPEN CREDENTIAL ↗</span>
+        </button>
+        <div className="credential-feature-caption">
+          <div>
+            <p className="credential-category">{credential.category}</p>
+            <h3>{credential.title}</h3>
+            <p>{credential.issuer}</p>
+          </div>
+          <span className="credential-proof">DOCUMENTED PROOF</span>
+        </div>
+      </div>
+
+      <aside className="credential-archive" aria-label="Certificate archive">
+        <div className="archive-heading"><span>LEARNING ARCHIVE</span><span>{credentialExhibits.length} RECORDS</span></div>
+        <div className="archive-list">
+          {credentialExhibits.map((item, index) => (
+            <button
+              type="button"
+              key={item.title}
+              className={index === active ? "archive-item is-active" : "archive-item"}
+              onClick={() => selectCredential(index)}
+              onDoubleClick={() => {
+                const target = document.querySelector(`[data-certificate="${item.image}"]`);
+                target?.click();
+              }}
+              aria-current={index === active ? "true" : undefined}
+            >
+              <span className="archive-number">{String(index + 1).padStart(2, "0")}</span>
+              <span className="archive-copy"><strong>{item.title}</strong><small>{item.category} · {item.issuer}</small></span>
+              <span className="archive-arrow">↗</span>
+            </button>
+          ))}
+        </div>
+        <p className="archive-hint">Select a record to feature it. Open the featured document to inspect it at full size.</p>
+      </aside>
+    </div>
+  );
+}
 
 export default function App() {
   useEffect(() => {
@@ -157,163 +395,28 @@ export default function App() {
       </div>
     </section>
     {/* PROJECTS */}
-    <section className="section projects" id="projects">
+    <section className="section projects exhibition-projects" id="projects">
       <div className="section-kicker reveal">03 — SELECTED WORK</div>
-      <div className="projects-heading">
+      <div className="projects-heading exhibition-heading">
         <div className="reveal">
           <p className="eyebrow">Software I’ve actually built</p>
           <h2>Projects with <em>purpose.</em></h2>
         </div>
         <p className="projects-note reveal">Screenshots are the proof. The details explain the work.</p>
       </div>
-      <div className="project-list">
-        <article className="project-feature reveal">
-          <div className="project-visual">
-            <div className="browser-frame">
-              <div className="browser-top">
-                <span className="browser-controls"><i /><i /><i /></span>
-                <span>Inventory Management System</span>
-                <span>01</span>
-              </div>
-              <img src="Resources/Thumbnail.png" alt="Inventory Management System screenshot" loading="lazy" />
-            </div>
-            <div className="project-number">01</div>
-          </div>
-          <div className="project-info">
-            <p className="project-label">DESKTOP APPLICATION</p>
-            <h3>Inventory Management System</h3>
-            <p>
-              Inventory and sales management system built in C# Windows Forms with
-              a local SQL database for organized product tracking, sales operations,
-              and reporting.
-            </p>
-            <ul className="feature-list">
-              <li>Product and stock management</li>
-              <li>SQL-backed records</li>
-              <li>Organized inventory workflow</li>
-            </ul>
-            <div className="project-tags"><span>C#</span><span>Windows Forms</span><span>SQL</span></div>
-            <a className="text-link" href="https://youtu.be/1BOK69F4tgY" target="_blank" rel="noopener noreferrer">Watch project demo <span>↗</span></a>
-          </div>
-        </article>
-        <article className="project-split reveal">
-          <div className="project-visual">
-            <div className="browser-frame compact">
-              <div className="browser-top"><span className="browser-controls"><i /><i /><i /></span><span>Bus Transportation System</span><span>02</span></div>
-              <img src="Resources/System.png" alt="Bus Transportation System screenshot" loading="lazy" />
-            </div>
-          </div>
-          <div className="project-info">
-            <p className="project-label">TRANSPORTATION SYSTEM</p>
-            <h3>Bus Transportation System</h3>
-            <p>A C# Windows Forms application designed around bus queues, scheduling, routes, and passenger flow.</p>
-            <div className="project-tags"><span>C#</span><span>WinForms</span><span>Queue System</span></div>
-            <a className="text-link" href="https://youtu.be/rxzNKqiPfA0" target="_blank" rel="noopener noreferrer">Watch project demo <span>↗</span></a>
-          </div>
-        </article>
-        <article className="project-split reverse reveal">
-          <div className="project-visual">
-            <div className="browser-frame compact">
-              <div className="browser-top"><span className="browser-controls"><i /><i /><i /></span><span>Mindeus Application</span><span>03</span></div>
-              <img src="Resources/barcode.png" alt="Mindeus Application screenshot" loading="lazy" />
-            </div>
-          </div>
-          <div className="project-info">
-            <p className="project-label">INVENTORY / SALES</p>
-            <h3>Mindeus Application</h3>
-            <p>C# and SQL inventory and sales system with QR Code integration for quick product tracking and inventory updates.</p>
-            <div className="project-tags"><span>C#</span><span>SQL</span><span>QR Code</span></div>
-            <a className="text-link" href="https://youtu.be/rN3H8uTWPIM" target="_blank" rel="noopener noreferrer">Watch project demo <span>↗</span></a>
-          </div>
-        </article>
-        <article className="project-wide reveal">
-          <div className="project-wide-image">
-            <img src="Resources/School ulit.png" alt="Enterprise Web Portal screenshot" loading="lazy" />
-          </div>
-          <div className="project-wide-info">
-            <div>
-              <p className="project-label">WEB APPLICATION</p>
-              <h3>Enterprise Web Portal</h3>
-            </div>
-            <div>
-              <p>Greenfield Academy Enrollment System for managing student registrations, enrollment records, and academic information.</p>
-              <div className="project-tags"><span>Lavalite</span><span>PHP</span><span>JavaScript</span><span>SQL</span><span>CSS</span></div>
-              <a className="text-link" href="https://youtu.be/odUhFoE4CeY" target="_blank" rel="noopener noreferrer">Watch project demo <span>↗</span></a>
-            </div>
-          </div>
-        </article>
-        <div className="project-pair">
-          <article className="project-mini reveal">
-            <div className="mini-project-image"><img src="Resources/MinSU.png" alt="MinSU Scholarship System screenshot" loading="lazy" /></div>
-            <p className="project-label">SCHOLARSHIP MANAGEMENT</p>
-            <h3>MinSU Scholarship System</h3>
-            <p>Centralized web-based scholarship application and record management for Mindoro State University.</p>
-            <div className="project-tags"><span>Lavalite</span><span>PHP</span><span>SQL</span><span>JavaScript</span></div>
-            <a className="text-link" href="https://youtu.be/ufftpIjSSVA" target="_blank" rel="noopener noreferrer">Watch demo <span>↗</span></a>
-          </article>
-          <article className="project-mini dark-project reveal">
-            <div className="mini-project-image"><img src="Resources/scholarflo.png" alt="ScholarFlow screenshot" loading="lazy" /></div>
-            <p className="project-label">RESEARCH PLATFORM</p>
-            <h3>ScholarFlow</h3>
-            <p>Laravel and SQL-powered research management platform for paper discovery, abstracts, citations, and organization.</p>
-            <div className="project-tags"><span>Laravel</span><span>PHP</span><span>SQL</span><span>JavaScript</span></div>
-            <a className="text-link" href="https://youtu.be/Ya7McivAlA0?si=OQBk-ZUsZ1klmfdx" target="_blank" rel="noopener noreferrer">Watch demo <span>↗</span></a>
-          </article>
-        </div>
-      </div>
+      <ProjectExhibition />
     </section>
     {/* CREDENTIALS */}
-    <section className="section credentials" id="credentials">
+    <section className="section credentials exhibition-credentials" id="credentials">
       <div className="section-kicker reveal">04 — CREDENTIALS</div>
-      <div className="credentials-heading">
+      <div className="credentials-heading exhibition-heading">
         <div className="reveal">
           <p className="eyebrow">Certificates &amp; training</p>
-          <h2>A collection of <em>proof.</em></h2>
+          <h2>Evidence of <em>learning.</em></h2>
         </div>
-        <p className="credentials-note reveal">Actual credential visuals from my project resources. Select any certificate to inspect it at full size.</p>
+        <p className="credentials-note reveal">A curated archive of technical training and credentials collected throughout my development journey.</p>
       </div>
-      <div className="credential-gallery">
-        <button className="credential featured-credential reveal" data-certificate="Resources/TesdaNC3.jpg" data-title="Programming NC III" data-issuer="TESDA National Certificate" type="button">
-          <span className="credential-image"><img src="Resources/TesdaNC3.jpg" alt="Programming NC III certificate" /></span>
-          <span className="credential-meta"><strong>Programming NC III</strong><small>TESDA National Certificate</small><b>View credential ↗</b></span>
-        </button>
-        <button className="credential credential-landscape reveal" data-certificate="Resources/Networking-Basics.png" data-title="Networking Basics" data-issuer="Cisco Networking Academy" type="button">
-          <span className="credential-image"><img src="Resources/Networking-Basics.png" alt="Networking Basics certificate" /></span>
-          <span className="credential-meta"><strong>Networking Basics</strong><small>Cisco Networking Academy</small><b>View ↗</b></span>
-        </button>
-        <button className="credential credential-landscape reveal" data-certificate="Resources/Introduction-to-Cybersecurity.png" data-title="Introduction to Cybersecurity" data-issuer="Cisco Networking Academy" type="button">
-          <span className="credential-image"><img src="Resources/Introduction-to-Cybersecurity.png" alt="Introduction to Cybersecurity certificate" /></span>
-          <span className="credential-meta"><strong>Introduction to Cybersecurity</strong><small>Cisco Networking Academy</small><b>View ↗</b></span>
-        </button>
-        <button className="credential credential-portrait reveal" data-certificate="Resources/Operating-System-Basics.png" data-title="Operating System Basics" data-issuer="Cisco Networking Academy" type="button">
-          <span className="credential-image"><img src="Resources/Operating-System-Basics.png" alt="Operating System Basics certificate" /></span>
-          <span className="credential-meta"><strong>Operating System Basics</strong><small>Cisco Networking Academy</small><b>View ↗</b></span>
-        </button>
-        <button className="credential credential-portrait reveal" data-certificate="Resources/computer-hardware-basics.png" data-title="Computer Hardware Basics" data-issuer="Cisco Networking Academy" type="button">
-          <span className="credential-image"><img src="Resources/computer-hardware-basics.png" alt="Computer Hardware Basics certificate" /></span>
-          <span className="credential-meta"><strong>Computer Hardware Basics</strong><small>Cisco Networking Academy</small><b>View ↗</b></span>
-        </button>
-        <button className="credential credential-landscape reveal" data-certificate="Resources/sql.png" data-title="Introduction to SQL" data-issuer="Simply Learn" type="button">
-          <span className="credential-image"><img src="Resources/sql.png" alt="Introduction to SQL certificate" /></span>
-          <span className="credential-meta"><strong>Introduction to SQL</strong><small>Simply Learn</small><b>View ↗</b></span>
-        </button>
-        <button className="credential credential-landscape reveal" data-certificate="Resources/python.png" data-title="Python Essentials 1" data-issuer="Cisco Networking Academy" type="button">
-          <span className="credential-image"><img src="Resources/python.png" alt="Python Essentials 1 certificate" /></span>
-          <span className="credential-meta"><strong>Python Essentials 1</strong><small>Cisco Networking Academy</small><b>View ↗</b></span>
-        </button>
-        <button className="credential credential-landscape reveal" data-certificate="Resources/python2.png" data-title="Python Essentials 2" data-issuer="Cisco Networking Academy" type="button">
-          <span className="credential-image"><img src="Resources/python2.png" alt="Python Essentials 2 certificate" /></span>
-          <span className="credential-meta"><strong>Python Essentials 2</strong><small>Cisco Networking Academy</small><b>View ↗</b></span>
-        </button>
-        <button className="credential credential-landscape reveal" data-certificate="Resources/dashboard.png" data-title="Excel Dashboards (Beginner)" data-issuer="Simply Learn" type="button">
-          <span className="credential-image"><img src="Resources/dashboard.png" alt="Excel Dashboards certificate" /></span>
-          <span className="credential-meta"><strong>Excel Dashboards (Beginner)</strong><small>Simply Learn</small><b>View ↗</b></span>
-        </button>
-        <button className="credential credential-landscape reveal" data-certificate="Resources/machinelearning.png" data-title="Machine Learning using Python" data-issuer="IBM / Coursera" type="button">
-          <span className="credential-image"><img src="Resources/machinelearning.png" alt="Machine Learning using Python certificate" /></span>
-          <span className="credential-meta"><strong>Machine Learning using Python</strong><small>IBM / Coursera</small><b>View ↗</b></span>
-        </button>
-      </div>
+      <CredentialExhibition />
     </section>
     {/* EXPERIENCE */}
     <section className="section experience" id="experience">
