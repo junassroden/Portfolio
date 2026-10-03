@@ -178,7 +178,11 @@ const skillGroups = [
     skills: [
       ["PHP", "PHP", "https://cdn.simpleicons.org/php/777BB4"],
       ["Laravel", "Laravel", "https://cdn.simpleicons.org/laravel/FF2D20"],
-      ["C#", "C#", "https://cdn.simpleicons.org/csharp/512BD4"],
+      [
+        "C#",
+        "C#",
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg",
+      ],
       [".NET", ".NET", "https://cdn.simpleicons.org/dotnet/512BD4"],
     ],
   },
@@ -189,11 +193,15 @@ const skillGroups = [
       "Structured data and application persistence for web and desktop projects.",
     skills: [
       ["MySQL", "MySQL", "https://cdn.simpleicons.org/mysql/4479A1"],
-      ["SQL", "SQL", "https://cdn.simpleicons.org/microsoftsqlserver/CC2927"],
+      [
+        "SQL",
+        "SQL",
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg",
+      ],
       [
         "SQL Server",
         "SQL Server",
-        "https://cdn.simpleicons.org/microsoftsqlserver/CC2927",
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg",
       ],
     ],
   },
@@ -208,19 +216,20 @@ const skillGroups = [
       [
         "VS Code",
         "Visual Studio Code",
-        "https://cdn.simpleicons.org/visualstudiocode/007ACC",
+        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg",
       ],
     ],
   },
 ];
 
 const logoMap = {
-  "C#": "https://cdn.simpleicons.org/csharp/512BD4",
+  "C#": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg",
   "Windows Forms": "https://cdn.simpleicons.org/dotnet/512BD4",
   WinForms: "https://cdn.simpleicons.org/dotnet/512BD4",
-  SQL: "https://cdn.simpleicons.org/microsoftsqlserver/CC2927",
+  SQL: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg",
   "Queue System": "https://cdn.simpleicons.org/dotnet/512BD4",
-  "QR Code": "https://cdn.simpleicons.org/qrcode/111111",
+  "QR Code":
+    "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.2/svgs/solid/qrcode.svg",
   Lavalite: "https://cdn.simpleicons.org/php/777BB4",
   PHP: "https://cdn.simpleicons.org/php/777BB4",
   JavaScript: "https://cdn.simpleicons.org/javascript/F7DF1E",
@@ -922,7 +931,13 @@ export default function App() {
                   rel="noopener noreferrer"
                   className="contact-link"
                 >
-                  <span className="contact-icon">GH</span>
+                  <span className="contact-icon">
+                    <img
+                      src="https://cdn.simpleicons.org/github/181717"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  </span>
                   <span>
                     <small>GitHub</small>
                     <strong>github.com/junassroden</strong>
