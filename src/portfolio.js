@@ -65,6 +65,45 @@ export function initializePortfolio() {
     }
   }
 
+  function transitionTheme(theme) {
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (
+      reducedMotion ||
+      typeof document.startViewTransition !== "function"
+    ) {
+      applyTheme(theme);
+      return;
+    }
+
+    const root = document.documentElement;
+    const toggleBounds = themeToggle?.getBoundingClientRect();
+
+    if (toggleBounds) {
+      root.style.setProperty(
+        "--theme-origin-x",
+        `${toggleBounds.left + toggleBounds.width / 2}px`
+      );
+      root.style.setProperty(
+        "--theme-origin-y",
+        `${toggleBounds.top + toggleBounds.height / 2}px`
+      );
+    }
+
+    const transition = document.startViewTransition(() => {
+      applyTheme(theme);
+    });
+
+    const clearOrigin = () => {
+      root.style.removeProperty("--theme-origin-x");
+      root.style.removeProperty("--theme-origin-y");
+    };
+
+    transition.finished.then(clearOrigin, clearOrigin);
+  }
+
   applyTheme(preferredTheme());
 
   themeToggle?.addEventListener("click", () => {
@@ -73,7 +112,7 @@ export function initializePortfolio() {
         ? "light"
         : "dark";
 
-    applyTheme(nextTheme);
+    transitionTheme(nextTheme);
 
     localStorage.setItem(THEME_KEY, nextTheme);
   });
