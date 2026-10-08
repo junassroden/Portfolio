@@ -184,6 +184,7 @@ const skillGroups = [
         "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg",
       ],
       [".NET", ".NET", "https://cdn.simpleicons.org/dotnet/512BD4"],
+      ["Node.js", "Node.js", "https://cdn.simpleicons.org/nodedotjs/339933"],
     ],
   },
   {
@@ -218,6 +219,7 @@ const skillGroups = [
         "Visual Studio Code",
         "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg",
       ],
+      ["Docker", "Docker", "https://cdn.simpleicons.org/docker/2496ED"],
     ],
   },
 ];
@@ -356,7 +358,6 @@ function ProjectShowcase() {
             );
           })}
         </div>
-        <div className="project-carousel-grid" aria-hidden="true" />
         <div className="project-carousel-mark">DRAG / SWIPE</div>
       </div>
 
@@ -384,7 +385,7 @@ function ProjectShowcase() {
         </div>
       </div>
 
-      <div className="project-detail">
+      <div className="project-detail" key={active}>
         <div className="project-detail-main">
           <p className="project-label">{project.label}</p>
           <h3>{project.title}</h3>
